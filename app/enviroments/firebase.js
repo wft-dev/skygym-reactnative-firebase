@@ -1,7 +1,7 @@
 import firebase from '@firebase/app';
 import '@firebase/auth';
 import "firebase/firestore"
-import { API_KEY,AUTH_DOMAIN, DATABASE_URL, PROJECT_ID, MESSAGE_SENDER_ID, APP_ID, STORAGE_BUCKET  } from '@env'
+import { API_KEY,AUTH_DOMAIN, DATABASE_URL, PROJECT_ID, MESSAGE_SENDER_ID, APP_ID, STORAGE_BUCKET , MEASUREMENT_ID } from '@env'
 const config = {
   apiKey: API_KEY,
   authDomain: AUTH_DOMAIN,
