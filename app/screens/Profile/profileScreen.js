@@ -138,7 +138,7 @@ class profileScreen extends Component {
 
   render() {
     const myStyle = styles(this.props);
-    const { containerMainSt, scrollContentSt, scrollSt, ketBordSt, multilineTextSt, timeVwSt, addVwSt, imageVwSt, containerSt, viewWidthSt } = myStyle;
+    const { containerMainSt, scrollContentSt, scrollSt, keyboardSt, multilineTextSt, timeVwSt, addVwSt, imageVwSt, containerSt, viewWidthSt } = myStyle;
     const { bgImg, logoImg } = Images
     return (
       <View style={containerMainSt}>
@@ -146,7 +146,7 @@ class profileScreen extends Component {
         <KeyboardAwareScrollView keyboardOpeningTime={0} enableResetScrollToCoords={false} showsVerticalScrollIndicator={false} contentContainerStyle={scrollContentSt}
           enableAutomaticScroll={true} extraScrollHeight={130} keyboardShouldPersistTaps="handled"
         >
-          {/* <KeyboardAvoidingView style={ketBordSt} behavior="padding" keyboardVerticalOffset={64}>
+          {/* <KeyboardAvoidingView style={keyboardSt} behavior="padding" keyboardVerticalOffset={64}>
 
           <ScrollView style={scrollSt} contentContainerStyle={scrollContentSt}> */}
 

@@ -13,7 +13,7 @@ export default function styles(props) {
       flexDirection: 'column',
       justifyContent: 'center',
     },
-    ketBordSt: {
+    keybordSt: {
       flex: 1,
     },
     scrollSt: {
