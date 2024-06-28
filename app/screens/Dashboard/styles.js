@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import textFontStyles from '../../components/TextFontStyle';
-import { Colors } from '../../utlis';
+import { Colors } from '../../utils';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -86,7 +86,7 @@ export default function styles(props) {
       // padding:  getOrientation() ==="portrait" ?  hp('1%') :  wp('1%'),
       height: getOrientation() === "portrait" ? hp('6%') : wp('6%'),
       width: getOrientation() === "portrait" ? hp('6%') : wp('6%'),
-      backgroundColor: Colors.yellowAlpaLight,
+      backgroundColor: Colors.yellowAlphaLight,
       borderRadius: getOrientation() === "portrait" ? hp('2%') : wp('2%'),
       justifyContent: 'center',
       alignItems: 'center'
@@ -95,7 +95,7 @@ export default function styles(props) {
       // padding:  getOrientation() ==="portrait" ?  hp('1%') :  wp('1%'),
       height: getOrientation() === "portrait" ? hp('3%') : wp('3%'),
       width: getOrientation() === "portrait" ? hp('3%') : wp('3%'),
-      // backgroundColor: Colors.yellowAlpaLight,
+      // backgroundColor: Colors.yellowAlphaLight,
     }
   })
   )

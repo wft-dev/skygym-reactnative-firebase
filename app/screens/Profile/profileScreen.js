@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, Text, TextInput, ImageBackground, KeyboardAvoidingView, ScrollView, Keyboard } from 'react-native';
 import styles from './styles';
 
-import { Images, Validate, Strings, Constants } from '../../utlis'
+import { Images, Validate, Strings, Constants } from '../../utils'
 import {
   CustomButton, CustomButtonType, CustomTextField, CustomImageUpload, CustomDatePicker, CustomChangePassword,
   CustomDropDown
@@ -79,7 +79,7 @@ class profileScreen extends Component {
         let errorTxt = '';
         if (key === Strings.onboarding.profile.email) {
           errorTxt = Validate.validateEmail(text);
-        }  else if (key === Strings.onboarding.profile.dob) {
+        } else if (key === Strings.onboarding.profile.dob) {
           errorTxt = Validate.validateAge(text);
         }
         else {
@@ -117,17 +117,17 @@ class profileScreen extends Component {
         role: Constants.admin,
       }
 
-     
+
       this.props.updateUser(userData, this.state.profileImageUri)
     } else {
     }
   }
 
   showPasswordView = (isshowPassword) => {
-    if (!this.props.isEditBool ) {
+    if (!this.props.isEditBool) {
 
-    Keyboard.dismiss()
-    this.setState({ isShowPasswordView: isshowPassword })
+      Keyboard.dismiss()
+      this.setState({ isShowPasswordView: isshowPassword })
     }
   }
 
@@ -285,8 +285,8 @@ class profileScreen extends Component {
                       if (this[Strings.onboarding.profile.gender].state.selector !== true) {
                         this[Strings.onboarding.profile.gender]._toggleSelector()
                       }
-                    }}                   
-                     onChangeText={(text) => this.handleChange(Strings.onboarding.profile.lastName, text)}
+                    }}
+                    onChangeText={(text) => this.handleChange(Strings.onboarding.profile.lastName, text)}
                   // onBlur={() => {
                   //   this.setState({
                   //     passwordError: Validate.validatePassword(this.state.password)
@@ -314,9 +314,9 @@ class profileScreen extends Component {
                     //   })
                     /> */}
                   <CustomDropDown
-                  refName={ref => {
-                    this[Strings.onboarding.profile.gender] = ref;
-                  }}
+                    refName={ref => {
+                      this[Strings.onboarding.profile.gender] = ref;
+                    }}
                     isSearch={false}
                     isEdit={this.props.isEditBool}
                     selectText={this.state.fields[Strings.onboarding.profile.gender]}
@@ -340,7 +340,7 @@ class profileScreen extends Component {
                     //onSubmitEditing={() =>  this[Strings.onboarding.profile.email].focus()}
                     // onChangeText={(text) => this.handleChange(Strings.onboarding.profile.password, text)}
                     onTouchStart={() =>
-                        this.showPasswordView(!this.props.isEditBool)
+                      this.showPasswordView(!this.props.isEditBool)
                     }
                   // onBlur={() => {
                   //   this.setState({

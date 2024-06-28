@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, Text, TextInput, ImageBackground, KeyboardAvoidingView, ScrollView, Keyboard } from 'react-native';
 import styles from './styles';
 
-import { Images, Validate, Strings, Constants } from '../../utlis'
+import { Images, Validate, Strings, Constants } from '../../utils'
 import { Actions } from 'react-native-router-flux'
 import {
   CustomTextField, CustomButton, CustomButtonType,

@@ -3,7 +3,7 @@ import { View, Image, Text, TextInput, ImageBackground, KeyboardAvoidingView, Sc
 import styles from './styles';
 
 import { CustomTextField, CustomButton, CustomButtonType } from '../../components';
-import { Images, Validate, Colors } from '../../utlis'
+import { Images, Validate, Colors } from '../../utils'
 import CustomDatePicker from '../../components/DatePicker/CustomDatePicker';
 
 //import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -32,15 +32,15 @@ class signupScreen extends Component {
         dobError: '',
         showNextView: false,
         orientation: getOrientation(),
-        gymName: '2',
-        gymId: '2',
-        gymAddress: '2',
-        firstName: '2',
-        lastName: '2',
-        gender: '2',
-        email: '2@gmail.com',
-        mobileNumber: '2',
-        password: '123456789',
+        gymName: '',
+        gymId: '',
+        gymAddress: '',
+        firstName: '',
+        lastName: '',
+        gender: '',
+        email: '',
+        mobileNumber: '',
+        password: '',
         dob: '',
     }
     componentDidMount() {
@@ -52,7 +52,6 @@ class signupScreen extends Component {
     }
 
     handleGymName = (text) => {
-
         // this.props.signUpUser.gymName = text
         this.setState({ gymName: text.trim() })
         if (this.state.gymNameError.trim()) {
@@ -90,9 +89,7 @@ class signupScreen extends Component {
         }
     }
 
-
     handleGender = (text) => {
-
         // this.props.signUpUser.gender = text
         this.setState({ gender: text.trim() })
         if (this.state.genderError.trim()) {
@@ -136,7 +133,6 @@ class signupScreen extends Component {
         Actions.login()
     }
 
-
     doneBtnAction = () => {
         const { gymName, gymId, gymAddress, firstName, lastName, gender,
             email, mobileNumber, password, dob } = this.state
@@ -162,12 +158,9 @@ class signupScreen extends Component {
                     email, mobileNumber, password, dob)
             }
         })
-
-
     }
 
     nextViewAction = () => {
-
         const gymNameErrorTxt = Validate.validateInput(this.state.gymName, 'Gym Name');
         const gymIdErrorTxt = Validate.validateInput(this.state.gymId, 'Gym ID');
         const gymAddressErrorTxt = Validate.validateInput(this.state.gymAddress, 'Gym address');
@@ -190,10 +183,10 @@ class signupScreen extends Component {
         })
     }
 
-
     getStyles() {
-        return { containerMainSt,  scrollContentSt, scrollSt, ketBordSt, textVwSt, textFldVwSt, doneBtSt, backVwSt, memberVwSt, logoSt, logoVwSt, textInputSt, bgViewSt, navBarSt, containerSt, memberTextSt } = styles(this.props);
+        return { containerMainSt, scrollContentSt, scrollSt, keyboardSt, textVwSt, textFldVwSt, doneBtSt, backVwSt, memberVwSt, logoSt, logoVwSt, textInputSt, bgViewSt, navBarSt, containerSt, memberTextSt } = styles(this.props);
     }
+
     firstView = () => {
         this.getStyles()
         return <View style={containerSt}>
@@ -275,7 +268,6 @@ class signupScreen extends Component {
         </View>
     }
 
-
     secondView = () => {
         this.getStyles()
         return <View style={containerSt}>
@@ -336,7 +328,7 @@ class signupScreen extends Component {
                 // }}
                 />
                 <CustomDatePicker lablMarginPr={true} title={'D.O.B'}
-                    noMaxDate = {true}
+                    noMaxDate={true}
                     backgroundColor={Colors.white} getDate={this.handleDob}
                     errorMsg={this.state.dobError}
                     refName={ref => {
@@ -357,11 +349,11 @@ class signupScreen extends Component {
         return (
             <View style={containerMainSt}>
                 <ImageBackground source={bgImg} style={bgViewSt}  >
-                    {/* <KeyboardAwareScrollView ref='scroll' contentContainerStyle={ketBordSt}    scrollEnabled={true}
-enableAutomaticScroll={true}     keyboardShouldPersistTaps="handled"
-resetScrollToCoords={{ x: 0, y: 0 }}
-          > */}
-                    <KeyboardAvoidingView style={ketBordSt} behavior="padding" >
+                    {/* <KeyboardAwareScrollView ref='scroll' contentContainerStyle={keyboardSt}    scrollEnabled={true}
+                        enableAutomaticScroll={true}     keyboardShouldPersistTaps="handled"
+                            resetScrollToCoords={{ x: 0, y: 0 }}
+                   > */}
+                    <KeyboardAvoidingView style={keyboardSt} behavior="padding" >
                         <ScrollView style={scrollSt} contentContainerStyle={scrollContentSt}>
                             {!this.state.showNextView ? this.firstView() : null}
                             {this.state.showNextView ? this.secondView() : null}

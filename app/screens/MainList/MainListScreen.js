@@ -5,7 +5,7 @@ import styles from './styles';
 
 import { DataList, FloatingButton, CustomList, CustomFilterList, CustomFilterModel, CustomSearchBar } from '../../components/index';
 
-import { Images, Constants } from '../../utlis'
+import { Images, Constants } from '../../utils'
 import { Actions } from 'react-native-router-flux'
 
 
@@ -25,7 +25,7 @@ class MainListScreen extends Component {
     componentDidMount() {
         const { menuImg, searchImg } = Images
         lor(this);
-        
+
         this.props.getNavigation.setParams({
         })
         setTimeout(() => {
@@ -89,7 +89,7 @@ class MainListScreen extends Component {
             Actions.TrainerAdd()
         }
         else if (this.props.isMember) {
-            Actions.MemberAdd({isProfile: false, isAddNewMemberShip: false, isRenewMemberShip: false, isBecomeMember: false})
+            Actions.MemberAdd({ isProfile: false, isAddNewMemberShip: false, isRenewMemberShip: false, isBecomeMember: false })
         }
     }
 
@@ -99,47 +99,47 @@ class MainListScreen extends Component {
 
     filterSelectedDate(selectedFilterText) {
         this.child.searchFilterByTypeFunction(selectedFilterText.title);
-        this.setState ({filterText: selectedFilterText.title})
+        this.setState({ filterText: selectedFilterText.title })
         this.showFilterView(false)
     }
 
     render() {
-        const {  containerMainSt, navGrayBarSt, navBarWhiteSt,
+        const { containerMainSt, navGrayBarSt, navBarWhiteSt,
             marginFilterView, marginListView,
         } = styles(this.props);
         return (
             <SafeAreaView style={{ flex: 1 }}>
-            <View style={containerMainSt}>
-                {this.state.showFilter ? <CustomFilterModel isShowPopUp = {false}
-                modelClosePr={(selectedFilterText) =>this.filterSelectedDate(selectedFilterText)} /> : null}
-                <View >
-                    {this.state.showSearch ? <CustomSearchBar onSearch={this.getSearchText} onCancel={this.cancelSearchAction} /> : null}
-                </View>
-                <View >
-                {!this.props.isHideFilter ? <View style={marginListView}>
-                        <CustomFilterList setSortByText = {this.state.filterText}onPressFilterPr={() => this.showFilterView(true)} />
-                    </View> : null }
-                    <View style={marginListView}>
-                        {this.props.isDataListShow ?
-                            <DataList isSwipeDeleteRow={this.props.isSwipeDeleteRow}
-                                onRef={(ref) => (this.child = ref)}
-                                data={this.props.listData}
-                                isEvent={this.props.isEvent}
-                                isMemberShipList={this.props.isMemberShipList} 
-                                isPurchaseMemberShipList={this.props.isPurchaseMemberShipList}/>
-                                :
-                                <CustomList isSwipeDeleteRow={this.props.isSwipeDeleteRow} 
-                                onCustomRef={(ref) => (this.child = ref)} 
-                                 data={this.props.listData} 
-                                isVisitor ={this.props.isVisitor} 
-                                isTrainer = {this.props.isTrainer} 
-                                isMember = {this.props.isMember} />
-                        }
+                <View style={containerMainSt}>
+                    {this.state.showFilter ? <CustomFilterModel isShowPopUp={false}
+                        modelClosePr={(selectedFilterText) => this.filterSelectedDate(selectedFilterText)} /> : null}
+                    <View >
+                        {this.state.showSearch ? <CustomSearchBar onSearch={this.getSearchText} onCancel={this.cancelSearchAction} /> : null}
                     </View>
+                    <View >
+                        {!this.props.isHideFilter ? <View style={marginListView}>
+                            <CustomFilterList setSortByText={this.state.filterText} onPressFilterPr={() => this.showFilterView(true)} />
+                        </View> : null}
+                        <View style={marginListView}>
+                            {this.props.isDataListShow ?
+                                <DataList isSwipeDeleteRow={this.props.isSwipeDeleteRow}
+                                    onRef={(ref) => (this.child = ref)}
+                                    data={this.props.listData}
+                                    isEvent={this.props.isEvent}
+                                    isMemberShipList={this.props.isMemberShipList}
+                                    isPurchaseMemberShipList={this.props.isPurchaseMemberShipList} />
+                                :
+                                <CustomList isSwipeDeleteRow={this.props.isSwipeDeleteRow}
+                                    onCustomRef={(ref) => (this.child = ref)}
+                                    data={this.props.listData}
+                                    isVisitor={this.props.isVisitor}
+                                    isTrainer={this.props.isTrainer}
+                                    isMember={this.props.isMember} />
+                            }
+                        </View>
+                    </View>
+                    {this.props.isHideFloatingBtn ? <FloatingButton onPressPlusBtn={this.naviagteToScreen} /> : null}
                 </View>
-                {this.props.isHideFloatingBtn ? <FloatingButton onPressPlusBtn={this.naviagteToScreen} /> : null}
-            </View>
-             </SafeAreaView>
+            </SafeAreaView>
         );
     }
 }

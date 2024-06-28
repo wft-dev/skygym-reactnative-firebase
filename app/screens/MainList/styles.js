@@ -5,26 +5,25 @@ import {
   heightPercentageToDP as hp,
   getOrientation
 } from 'react-native-responsive-screen';
-import {Colors,Constants} from '../../utlis';
-import colors from '../../utlis/colors';
+import { Colors, Constants } from '../../utils';
+import colors from '../../utils/colors';
 
-export default function styles(props)
-{
-  return ( StyleSheet.create({
+export default function styles(props) {
+  return (StyleSheet.create({
     mainViewSt: {
       flex: 1,
     },
     containerMainSt: {
-    flex: 1,
-    backgroundColor: colors.black,
+      flex: 1,
+      backgroundColor: colors.black,
       // flexDirection: 'column',
       // alignContent:'center',
       // justifyContent: 'center',
       //paddingLeft: getOrientation() ==="portrait" ?  '4%' : '8%',
       //paddingRight: getOrientation() ==="portrait" ?  '4%' : '8%',
 
-     paddingHorizontal: getOrientation() ==="portrait" ?  '3%' : '8%',
-    // marginBottom: 20,
+      paddingHorizontal: getOrientation() === "portrait" ? '3%' : '8%',
+      // marginBottom: 20,
 
     },
     marginSearchView: {
@@ -47,16 +46,17 @@ export default function styles(props)
       backgroundColor: Colors.white,
       ...navStyleForIos,
     },
-   
+
   })
   )
 }
-const navStyleForIos = { ...Platform.select({
-  ios: {
-    //  marginTop: StatusBar.currentHeight
-    elevation: 0,
-    shadowOpacity: 0,
-    borderBottomWidth: 0,
-  }
-})
+const navStyleForIos = {
+  ...Platform.select({
+    ios: {
+      //  marginTop: StatusBar.currentHeight
+      elevation: 0,
+      shadowOpacity: 0,
+      borderBottomWidth: 0,
+    }
+  })
 }

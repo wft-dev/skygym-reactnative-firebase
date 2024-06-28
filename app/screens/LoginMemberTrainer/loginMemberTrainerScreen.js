@@ -4,7 +4,7 @@ import styles from './styles';
 import { connect } from 'react-redux';
 
 import { CustomTextField, CustomButton, CustomButtonType } from '../../components/index';
-import { Images, Colors, Validate } from '../../utlis'
+import { Images, Colors, Validate } from '../../utils'
 import { Actions } from 'react-native-router-flux'
 import { loginMemberTrainer, } from '../../actions/session/sessionAction';
 

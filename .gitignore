@@ -22,6 +22,7 @@ DerivedData
 *.xcuserstate
 package.json
 package-lock.json
+service_key.json
 
 # Android/IntelliJ
 #
@@ -57,5 +58,21 @@ buck-out/
 # Bundle artifact
 *.jsbundle
 
+
 # CocoaPods
 /ios/Pods/
+ios/Podfile
+ios/Podfile.lock
+
+# ios
+ios/GoogleService-Info.plist
+
+# android
+android/app/release
+android/app/build
+android/app/debug
+android/app/google-services.json
+android/app/debug.keystore
+
+
+.env

@@ -4,7 +4,7 @@ import { styles } from './styles';
 import { Scene, Router, Drawer, Stack, Actions, Overlay, Modal } from 'react-native-router-flux';
 import { connect, Provider } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
-import { Colors, Images, Constants } from '../../utlis'
+import { Colors, Images, Constants } from '../../utils'
 import {
   widthPercentageToDP as wp,
   getOrientation
@@ -17,11 +17,11 @@ import Event from '../Event/index';
 import Dashboard from '../Dashboard/index';
 import Profile from '../Profile/index';
 import MemberList from '../MemberList/index';
-import VistitorList from '../VistitorList/index';
+import VisitorList from '../VisitorList/index';
 import TrainerList from '../TrainerList/index';
 import EventList from '../EventList/index';
 import MemberShipList from '../MemberShipList/index';
-import PurcahseMemberShipList from '../PurcahseMemberShipList/index';
+import PurchaseMemberShipList from '../PurchaseMemberShipList/index';
 import MemberShipDetail from '../MemberShipDetail/index';
 import Attendance from '../Attendance/index';
 import MembershipAdd from '../MembershipAdd/index';
@@ -83,7 +83,7 @@ class Root extends React.Component {
     //   showMemberBtn = this.props.user.eventPermission === false 
 
     // } else if (this.props.user.role === Constants.admin) {
-  
+
     // }
     return (
       // <ImageBackground source={Images.whBgImg} style={styles.bgViewSt}  >
@@ -96,21 +96,21 @@ class Root extends React.Component {
           <Scene key="LoginMemberTrainer" component={LoginMemberTrainer} hideNavBar />
           <Drawer hideNavBar key="drawerMenu" initial={this.props.isLogin ? true : false} contentComponent={DrawerContent} drawerImage={Images.menuImg}
             drawerWidth={Constants.screenWidth * 0.7} drawerPosition="left" >
-                       {this.props.user.role !== Constants.member  &&
-            <Stack  >
-              <Scene key="Dashboard" component={Dashboard} title="Dashboard" initial = {false }/>
-              <Scene key="TrainerAdd" component={TrainerAdd} title="Trainer" />
-              <Scene key="Attendance" back component={Attendance} title="Attendance" />
-            </Stack> }
+            {this.props.user.role !== Constants.member &&
+              <Stack  >
+                <Scene key="Dashboard" component={Dashboard} title="Dashboard" initial={false} />
+                <Scene key="TrainerAdd" component={TrainerAdd} title="Trainer" />
+                <Scene key="Attendance" back component={Attendance} title="Attendance" />
+              </Stack>}
             <Stack >
-            {this.props.user.role !== Constants.member  &&
-             <Scene key="Member" component={MemberList} title="Member" rightButtonImage={Images.searchImg} rightButtonStyle={styles.rightBtnIconSt} onRight={() => { }} />
-               }
-              <Scene key="MemberDetail" back = {this.props.user.role !== Constants.member } component={MemberDetail} title="Member Detail" />
-              <Scene key="MemberAdd" back component={MemberAdd} title="Member" renderRightButton={() => 
-               this.props.user.memberPermission &&  this.props.user.memberPermission === false || this.props.user.role === Constants.member  ? null : this.renderEDitButton()} />
-              <Scene key="MemberShipDetail" back component={MemberShipDetail} title="MemberShip Detail" rightButtonImage={this.props.user.role === Constants.member  ? null : Images.dotImg} onRight={() => { }} />
-              <Scene key="PurcahseMemberShipList" back component={PurcahseMemberShipList} title="MemberShip Plan" />
+              {this.props.user.role !== Constants.member &&
+                <Scene key="Member" component={MemberList} title="Member" rightButtonImage={Images.searchImg} rightButtonStyle={styles.rightBtnIconSt} onRight={() => { }} />
+              }
+              <Scene key="MemberDetail" back={this.props.user.role !== Constants.member} component={MemberDetail} title="Member Detail" />
+              <Scene key="MemberAdd" back component={MemberAdd} title="Member" renderRightButton={() =>
+                this.props.user.memberPermission && this.props.user.memberPermission === false || this.props.user.role === Constants.member ? null : this.renderEDitButton()} />
+              <Scene key="MemberShipDetail" back component={MemberShipDetail} title="MemberShip Detail" rightButtonImage={this.props.user.role === Constants.member ? null : Images.dotImg} onRight={() => { }} />
+              <Scene key="PurchaseMemberShipList" back component={PurchaseMemberShipList} title="MemberShip Plan" />
               <Scene key="Attendance" back component={Attendance} title="Attendance" />
             </Stack>
             <Stack >
@@ -120,10 +120,10 @@ class Root extends React.Component {
               <Scene key="Profile" component={Profile} title="Profile" renderRightButton={() => this.renderEDitButton()} />
             </Stack>
             <Stack >
-              <Scene key="MemberProfile" component={MemberProfile} title= "Profile" renderRightButton={() =>  this.renderEDitButton()} />
+              <Scene key="MemberProfile" component={MemberProfile} title="Profile" renderRightButton={() => this.renderEDitButton()} />
             </Stack>
             <Stack >
-              <Scene key="TrainerProfile" component={TrainerProfile} title={this.props.user.role === Constants.member ?"Trainer" : "Profile"}renderRightButton={() => this.props.user.role === Constants.member ? null : this.renderEDitButton()} />
+              <Scene key="TrainerProfile" component={TrainerProfile} title={this.props.user.role === Constants.member ? "Trainer" : "Profile"} renderRightButton={() => this.props.user.role === Constants.member ? null : this.renderEDitButton()} />
             </Stack>
             <Stack >
               <Scene key="Trainer" component={TrainerList} title="Trainer" rightButtonImage={Images.searchImg} rightButtonStyle={styles.rightBtnIconSt} onRight={() => { }} />
@@ -133,20 +133,20 @@ class Root extends React.Component {
             {/* <Stack key="Membership_plans" titleStyle={{ alignSelf: 'center' }}> */}
             <Stack  >
               <Scene key="Membership_plans" component={MemberShipList} title="Membership" rightButtonImage={Images.searchImg} rightButtonStyle={styles.rightBtnIconSt} onRight={() => { }} />
-              <Scene key="MembershipAdd" back component={MembershipAdd} title="Membership" renderRightButton={() => 
-                this.props.user.role === Constants.trainer ||   this.props.user.role === Constants.member ? null : this.renderEDitButton()} />
+              <Scene key="MembershipAdd" back component={MembershipAdd} title="Membership" renderRightButton={() =>
+                this.props.user.role === Constants.trainer || this.props.user.role === Constants.member ? null : this.renderEDitButton()} />
             </Stack>
             <Stack >
               <Scene key="EventList" component={EventList} title="Events" rightButtonImage={Images.searchImg} rightButtonStyle={styles.rightBtnIconSt} onRight={() => { }} />
               <Scene key="Event" onExit={() => this.onEnter} back component={Event} title="Events" renderRightButton={() =>
                 this.props.user.eventPermission && this.props.user.eventPermission === false || this.props.user.role === Constants.member ? null : this.renderEDitButton()} />
             </Stack>
-          
+
             <Stack >
-              <Scene key="Visitors" component={VistitorList} title="Visitors" rightButtonImage={Images.searchImg} rightButtonStyle={styles.rightBtnIconSt} onRight={() => { }} />
+              <Scene key="Visitors" component={VisitorList} title="Visitors" rightButtonImage={Images.searchImg} rightButtonStyle={styles.rightBtnIconSt} onRight={() => { }} />
               <Scene key="VisitorAdd" back component={VisitorAdd} title="Visitor" renderRightButton={() => this.props.user.visitorPermission === false ? null : this.renderEDitButton()} />
-              <Scene key="MemberAdd" back component={MemberAdd} title="Member" renderRightButton={() => 
-                 this.props.user.memberPermission &&  this.props.user.memberPermission === false || this.props.user.role === Constants.member  ? null : this.renderEDitButton()} />
+              <Scene key="MemberAdd" back component={MemberAdd} title="Member" renderRightButton={() =>
+                this.props.user.memberPermission && this.props.user.memberPermission === false || this.props.user.role === Constants.member ? null : this.renderEDitButton()} />
 
             </Stack>
           </Drawer>

@@ -5,17 +5,16 @@ import {
   heightPercentageToDP as hp,
   getOrientation
 } from 'react-native-responsive-screen';
-import {Colors} from '../../utlis';
+import { Colors } from '../../utils';
 
-export default function styles(props)
-{
-  return ( StyleSheet.create({
+export default function styles(props) {
+  return (StyleSheet.create({
     containerMainSt: {
       flex: 1,
       flexDirection: 'column',
       justifyContent: 'center',
     },
-    ketBordSt: {
+    keyboardSt: {
       flex: 1,
     },
     scrollSt: {
@@ -27,8 +26,8 @@ export default function styles(props)
       //  paddingVertical:'100%',
     },
     multiTextSt: {
-      minHeight: 70,maxHeight: 100 
-   },
+      minHeight: 70, maxHeight: 100
+    },
     containerSt: {
       flex: 1,
       flexDirection: 'column',
@@ -40,16 +39,16 @@ export default function styles(props)
       alignItems: 'center',
       justifyContent: 'center',
       //height: getOrientation() === "portrait" ? hp('24%') : hp('24%'),
-      height:hp('15%'),
+      height: hp('15%'),
       marginBottom: getOrientation() === "portrait" ? '2%' : '4%',
     },
-    txtBgCltSt : {
-      backgroundColor:Colors.white,
+    txtBgCltSt: {
+      backgroundColor: Colors.white,
     },
     backVwSt: {
       marginTop: '8%',
       flexDirection: 'row',
-      justifyContent:'space-between',
+      justifyContent: 'space-between',
       paddingHorizontal: '1%',
     },
     doneBtSt: {
